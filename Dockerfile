@@ -9,7 +9,7 @@ RUN mkdir app/css
 RUN mkdir app/scripts
 RUN mkdir app/templates
 RUN ls -a
-RUN cd src
+RUN cd src && ls -a
 RUN ls -a
 RUN go build -o ../app/sgotify
 RUN cd ..
