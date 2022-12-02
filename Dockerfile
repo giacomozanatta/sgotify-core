@@ -1,4 +1,6 @@
 FROM golang:latest
+WORKDIR /app
+COPY . ./
 RUN go install github.com/gopherjs/gopherjs@v1.18.0-beta1
 RUN go install golang.org/dl/go1.18.6@latest
 RUN go1.18.6 download
