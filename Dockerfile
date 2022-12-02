@@ -10,6 +10,7 @@ RUN mkdir app/scripts
 RUN mkdir app/templates
 RUN ls -a
 RUN cd src
+RUN ls -a
 RUN go build -o ../app/sgotify
 RUN cd ..
 RUN cp -R src/client/css app/client/css
