@@ -1,0 +1,14 @@
+{{ template "Header" }}
+<div class="breadcrumbs">
+    <a href="/queue"><- Go back to queue</a>
+</div>
+<div class="section-header">
+    <h5 class="mt-4">You searched for:</h5>
+    <h4>{{ .Query }}</h4>
+</div>
+<div class="playlist list-group mt-4 mb-4">
+    {{ range .Songs }}
+    {{ template "Song" .}}
+    {{ end }}
+</div>
+{{ template "Footer" }}
