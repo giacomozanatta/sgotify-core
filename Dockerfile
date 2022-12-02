@@ -8,6 +8,7 @@ RUN mkdir app/client
 RUN mkdir app/css
 RUN mkdir app/scripts
 RUN mkdir app/templates
+RUN ls -a
 RUN go build main.go -o app/sgotify
 RUN cp -R client/css app/client/css
 RUN cp -R client/templates app/client/templates
