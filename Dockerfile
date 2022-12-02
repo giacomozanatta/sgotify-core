@@ -11,11 +11,12 @@ RUN go install github.com/gopherjs/gopherjs@v1.18.0-beta1 &&\
   mkdir app/scripts &&\
   mkdir app/templates &&\
   ls -a &&\
-  go build -o ../app/sgotify &&\
+  mkdir bin &&\
+  go build -o bin/sgotify &&\
 #RUN cd ..
 #RUN cp -R src/client/css app/client/css
 #RUN cp -R src/client/templates app/client/templates
-  gopherjs build src/client/scripts/main.go &&\
+  gopherjs build client/scripts/main.go &&\
 #RUN ls -a
 #RUN cd client/scripts
   ls -a
