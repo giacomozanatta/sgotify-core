@@ -14,3 +14,5 @@ RUN go install github.com/gopherjs/gopherjs@v1.18.0-beta1 &&\
 #RUN ls -a
 #RUN cd client/scripts
   ls -a &&\
+  cd bin &&\
+  ls -a
