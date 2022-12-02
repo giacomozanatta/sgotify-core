@@ -1,1 +1,1 @@
-web: ./app/sgotify
+web: ./app/bin/sgotify
