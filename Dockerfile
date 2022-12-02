@@ -9,7 +9,9 @@ RUN mkdir app/css
 RUN mkdir app/scripts
 RUN mkdir app/templates
 RUN ls -a
-RUN go build src/main.go -o app/sgotify
+RUN cd src
+RUN go build -o ../app/sgotify
+RUN cd ..
 RUN cp -R src/client/css app/client/css
 RUN cp -R src/client/templates app/client/templates
 RUN gopherjs build src/client/scripts/main.go
