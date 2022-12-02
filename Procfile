@@ -1,1 +1,1 @@
-web: ./bin/Sgotify
+web: ./bin/sgotify
