@@ -35,5 +35,10 @@ func AuthURL(redirectURL string) string {
 	fmt.Println(redirectURL)
 	return spotifyauth.New(
 		spotifyauth.WithRedirectURL(redirectURL),
-		spotifyauth.WithScopes(spotifyauth.ScopeUserReadPrivate)).AuthURL(AUTH_STATE)
+		spotifyauth.WithScopes(
+			spotifyauth.ScopeUserReadRecentlyPlayed,
+			"app-remote-control",
+			spotifyauth.ScopeStreaming,
+			spotifyauth.ScopeUserReadPlaybackState,
+		)).AuthURL(AUTH_STATE)
 }

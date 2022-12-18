@@ -1,15 +1,19 @@
 package controllers
 
 import (
+	"Sgotify/sgotify"
+	"context"
 	"encoding/base64"
+	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"google.golang.org/grpc"
 	"io"
-	"log"
 	"net/http"
 	"net/url"
 	"os"
 	"strings"
+	"time"
 )
 
 func CompleteSpotifyAuth(c *gin.Context) {
@@ -32,11 +36,24 @@ func CompleteSpotifyAuth(c *gin.Context) {
 		fmt.Println(err.Error())
 	}
 	defer response.Body.Close()
-	b, err := io.ReadAll(response.Body)
-	// b, err := ioutil.ReadAll(resp.Body)  Go.1.15 and earlier
+	body, err := io.ReadAll(response.Body)
 	if err != nil {
-		log.Fatalln(err)
+		fmt.Println(err.Error())
 	}
+	spotifyAuth := sgotify.SpotifyAuth{}
+	json.Unmarshal(body, &spotifyAuth)
+	var conn *grpc.ClientConn
+	conn, err = grpc.Dial(":4040", grpc.WithInsecure())
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	defer conn.Close()
 
-	fmt.Println(string(b))
+	sgotService := sgotify.NewSgotifyClient(conn)
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	defer cancel()
+	_, err = sgotService.SendSpotifyAuth(ctx, &spotifyAuth)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
 }
