@@ -8,7 +8,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"github.com/zmb3/spotify/v2"
-	"log"
 	"net/http"
 )
 
