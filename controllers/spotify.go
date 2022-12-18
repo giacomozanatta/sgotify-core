@@ -43,7 +43,7 @@ func CompleteSpotifyAuth(c *gin.Context) {
 	spotifyAuth := sgotify.SpotifyAuth{}
 	json.Unmarshal(body, &spotifyAuth)
 	var conn *grpc.ClientConn
-	conn, err = grpc.Dial("localhost:4040", grpc.WithInsecure())
+	conn, err = grpc.Dial(os.Getenv("SGOTIPY_GRPC_URL"), grpc.WithInsecure())
 	if err != nil {
 		fmt.Println(err.Error())
 	}
