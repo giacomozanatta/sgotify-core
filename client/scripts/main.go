@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-import "Sgotify/sgotify"
+import "sgotify-core/sgotify"
 
 func addToQueueEvent(element dom.Element) {
 	element.AddEventListener("click", false, func(event dom.Event) {

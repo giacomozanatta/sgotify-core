@@ -1,14 +1,14 @@
 package main
 
 import (
-	"Sgotify/controllers"
-	"Sgotify/sgotify"
 	"context"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"github.com/zmb3/spotify/v2"
 	"net/http"
+	"sgotify-core/controllers"
+	"sgotify-core/sgotify"
 )
 
 func main() {
@@ -104,6 +104,8 @@ func main() {
 	})
 
 	engine.GET("/admin", controllers.GETAdmin)
+	engine.GET("/admin/sgotipy/start", controllers.StartSgotipy)
+	engine.GET("/admin/sgotipy/stop", controllers.StopSgotipy)
 	engine.GET("spotify_auth_callback", controllers.CompleteSpotifyAuth)
 	engine.Run(":8080") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 

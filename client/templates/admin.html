@@ -8,8 +8,12 @@
 
 
 <div class="sgotipy">
-    <h3 class="mt-4">SGOTIPY is RUNNING!</h3>
-    <a class="btn btn-primary" href="{{ .SpotifyAuthURL }}" role="button">STOP SERVICE</a>
+    <h3 class="mt-4">SGOTIPY is {{if eq .SgotipyStatus.Status "NOT_RUNNING" }} NOT {{ end }}RUNNING!</h3>
+    {{if eq .SgotipyStatus.Status "RUNNING" }}
+    <a class="btn btn-primary" href="/admin/sgotipy/stop" role="button">STOP SERVICE</a>
+    {{ else }}
+    <a class="btn btn-primary" href="/admin/sgotipy/start" role="button">START SERVICE</a>
+    {{ end }}
 </div>
 
 

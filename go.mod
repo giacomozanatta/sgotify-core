@@ -1,4 +1,4 @@
-module Sgotify
+module sgotify-core
 
 go 1.19
 
