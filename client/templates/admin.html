@@ -2,5 +2,16 @@
 <div class="breadcrumbs">
     <a href="/queue"><- Go back to queue</a>
 </div>
-{{ .SpotifyAuthURL }}
+<div class="section-header">
+    <h2 class="mt-4">Admin</h2>
+</div>
+
+
+<div class="sgotipy">
+    <h3 class="mt-4">SGOTIPY is RUNNING!</h3>
+    <a class="btn btn-primary" href="{{ .SpotifyAuthURL }}" role="button">STOP SERVICE</a>
+</div>
+
+
+</div>
 {{ template "Footer" }}
