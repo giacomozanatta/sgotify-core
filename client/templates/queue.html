@@ -4,8 +4,8 @@
     <div class="">Total songs: {{ len .SongsOnQueue }}</div>
     <div class="">1h 45 min</div>
 </div>
-<div class="on-spotify">
-    <h3 class="mt-4">On Spotify</h3>
+<div class="on-spotify main-container">
+    <h3 class="mt-2">On Spotify</h3>
         {{ if not .SongsOnSpotify }}
         <div>No Songs on Spotify...</div>
         {{ else }}
@@ -16,8 +16,8 @@
             </div>
             {{ end }}
 </div>
-<div class="on-queue">
-    <h3 class="mt-4">On Queue</h3>
+<div class="on-queue main-container">
+    <h3 class="mt-2">On Queue</h3>
     {{ if not .SongsOnQueue }}
     <div>No Songs on Queue...</div>
     {{ else }}

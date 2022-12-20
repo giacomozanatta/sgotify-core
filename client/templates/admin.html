@@ -8,7 +8,16 @@
 
 
 <div class="sgotipy">
-    <h3 class="mt-4">SGOTIPY is {{if eq .SgotipyStatus.Status "NOT_RUNNING" }} NOT {{ end }}RUNNING!</h3>
+    <h5 class="mt-2 font-weight-bold">SGOTIPY is {{if eq .SgotipyStatus.Status "NOT_RUNNING" }}NOT {{ end }}RUNNING!</h5>
+    {{ if ne .SgotipyStatus.Device "" }}
+    <ul class="list-no-bullets">
+        <li>Active device: {{ .SgotipyStatus.Device }}</li>
+        <li>Device status: {{ .SgotipyStatus.DeviceStatus }}</li>
+        {{ if ne .SgotipyStatus.CurrentSong.Id "" }}
+        <li>Current Song: {{ .SgotipyStatus.CurrentSong.Title }} - {{ .SgotipyStatus.CurrentSong.Artists }} </li>
+        {{ end }}
+    </ul>
+    {{ end }}
     {{if eq .SgotipyStatus.Status "RUNNING" }}
     <a class="btn btn-primary" href="/admin/sgotipy/stop" role="button">STOP SERVICE</a>
     {{ else }}
