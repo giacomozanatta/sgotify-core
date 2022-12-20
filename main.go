@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"sgotify-core/controllers"
 	"sgotify-core/sgotify"
+	"sgotify-core/sgotipy"
 )
 
 func main() {
@@ -26,7 +27,33 @@ func main() {
 	})
 
 	engine.GET("/queue", func(c *gin.Context) {
+		sgotipyStatus, err := sgotipy.GetStatus()
+		if err != nil {
+			fmt.Println(err.Error())
+			sgotipyStatus = &sgotipy.SgotipyStatusResponse{
+				Status:       "FAIL",
+				Device:       "",
+				DeviceStatus: "",
+				CurrentSong:  nil,
+			}
+		}
+		var song *sgotify.Song
+		if sgotipyStatus.CurrentSong != nil {
+			song = &sgotify.Song{
+				Title:     sgotipyStatus.CurrentSong.Title,
+				Author:    sgotipyStatus.CurrentSong.Artists,
+				Id:        sgotipyStatus.CurrentSong.Id,
+				InQueue:   true,
+				OnSpotify: true,
+			}
+		}
 		c.HTML(http.StatusOK, "queue.html", gin.H{
+			"SgotipyStatus": map[string]interface{}{
+				"Status":       sgotipyStatus.Status,
+				"Device":       sgotipyStatus.Device,
+				"DeviceStatus": sgotipyStatus.DeviceStatus,
+				"CurrentSong":  song,
+			},
 			"SongsOnSpotify": queue.SongsOnSpotify(),
 			"SongsOnQueue":   queue.SongsNotOnSpotify(),
 		})

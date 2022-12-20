@@ -8,7 +8,11 @@
 
 
 <div class="sgotipy">
-    <h5 class="mt-2 font-weight-bold">SGOTIPY is {{if eq .SgotipyStatus.Status "NOT_RUNNING" }}NOT {{ end }}RUNNING!</h5>
+    {{if eq .SgotipyStatus.Status "FAIL" }}
+    <h5 class="mt-2 font-weight-bold">STATUS: FAIL! :(</h5>
+    Please check sgotipy service
+    {{ else }}
+    <h5 class="mt-2 font-weight-bold">STATUS: {{if eq .SgotipyStatus.Status "NOT_RUNNING" }}NOT {{ end }}RUNNING!</h5>
     {{ if ne .SgotipyStatus.Device "" }}
     <ul class="list-no-bullets">
         <li>Active device: {{ .SgotipyStatus.Device }}</li>
@@ -22,6 +26,7 @@
     <a class="btn btn-primary" href="/admin/sgotipy/stop" role="button">STOP SERVICE</a>
     {{ else }}
     <a class="btn btn-primary" href="/admin/sgotipy/start" role="button">START SERVICE</a>
+    {{ end }}
     {{ end }}
 </div>
 

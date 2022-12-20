@@ -5,21 +5,28 @@
         <div class="">Total songs: {{ len .SongsOnQueue }}</div>
         <div class="">1h 45 min</div>
     </div>
+    {{ if eq .SgotipyStatus.Status "RUNNING" }}
     <div class="on-spotify container main-container">
-        <h3 class="mt-2">On Spotify</h3>
-            {{ if not .SongsOnSpotify }}
-            <div>No Songs on Spotify...</div>
-            {{ else }}
-                <div class="playlist list-group mt-4 mb-4">
-                    {{ range .SongsOnSpotify }}
-                        {{ template "Song" .}}
-                    {{ end }}
-                </div>
-                {{ end }}
+        <h3 class="mt-2">Playing</h3>
+        {{ if or (not .SgotipyStatus.CurrentSong) (not .SgotipyStatus.CurrentSong.Id)}}
+            Currently no playing song :(
+        {{ else }}
+            <div class="playlist list-group mt-4 mb-4">
+            {{ template "Song" .SgotipyStatus.CurrentSong}}
+            </div>
+        {{ end }}
+        <h5 class="mt-2">Next</h5>
+        <div class="playlist list-group mt-4 mb-4">
+            {{ template "Song" .SgotipyStatus.CurrentSong}}
+            {{ template "Song" .SgotipyStatus.CurrentSong}}
+            {{ template "Song" .SgotipyStatus.CurrentSong}}
+        </div>
     </div>
+    {{ end }}
+
     
     <div class="on-queue container main-container">
-        <h3 class="mt-2">On Queue</h3>
+        <h3 class="mt-2">Queue</h3>
         {{ if not .SongsOnQueue }}
         <div>No Songs on Queue...</div>
         {{ else }}

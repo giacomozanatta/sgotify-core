@@ -13,8 +13,12 @@ func GETAdmin(c *gin.Context) {
 	sgotipyStatus, err := sgotipy.GetStatus()
 	if err != nil {
 		fmt.Println(err.Error())
-		c.AbortWithError(http.StatusInternalServerError, err)
-		return
+		sgotipyStatus = &sgotipy.SgotipyStatusResponse{
+			Status:       "FAIL",
+			Device:       "",
+			DeviceStatus: "",
+			CurrentSong:  nil,
+		}
 	}
 	c.HTML(http.StatusOK, "admin.html", gin.H{
 		"SgotipyStatus": sgotipyStatus,
