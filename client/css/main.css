@@ -2,12 +2,11 @@ body {
     font-family: 'Press Start 2P', cursive;
     font-size: 0.6em;
     color: #12130F;
-    background-color: #00C49A;
+    background-color: #2D7DD2;
 }
 
 .main-container {
-    background-color: #3B413C;
-    color:blanchedalmond;
+    background-color: #78FF8F;
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.64) !important;
     border-radius: .75rem;
 }
@@ -95,7 +94,7 @@ h5 {
 }
 .playlist {
     border: medium solid #212529;
-    background-color: #FF8C42;
+    background-color: #F45D01;
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.64) !important;
     border-radius: .75rem;
 

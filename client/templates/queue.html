@@ -1,11 +1,11 @@
 {{ template "Header" }}
-<div class="container main-container">
+<div class="container">
     <div class="container">
         <h2 class="mt-2">Queue</h2>
         <div class="">Total songs: {{ len .SongsOnQueue }}</div>
         <div class="">1h 45 min</div>
     </div>
-    <div class="on-spotify container sub-container-1">
+    <div class="on-spotify container main-container">
         <h3 class="mt-2">On Spotify</h3>
             {{ if not .SongsOnSpotify }}
             <div>No Songs on Spotify...</div>
@@ -18,7 +18,7 @@
                 {{ end }}
     </div>
     
-    <div class="on-queue container sub-container-1">
+    <div class="on-queue container main-container">
         <h3 class="mt-2">On Queue</h3>
         {{ if not .SongsOnQueue }}
         <div>No Songs on Queue...</div>
