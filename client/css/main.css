@@ -6,11 +6,34 @@ body {
 }
 
 .main-container {
-    background-color: #F2E863;
+    background-color: #3B413C;
+    color:blanchedalmond;
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.64) !important;
     border-radius: .75rem;
 }
+.sub-container-1 {
+    background-color: #F2E863;
+    color: #12130F;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.64) !important;
+    border-radius: .75rem;
+}
+.input-group-search {
+}
 
+.button-search {
+    border-radius: 0rem 0.75rem 0.75rem 0rem !important;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.64) !important;
+    background-color: #FF8C42 !important;
+    border-color: #3B413C !important;
+    border-width: medium;
+}
+
+.search-songs {
+    border-radius: .75rem 0rem 0rem 0.75rem !important;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.64) !important;
+    background-color: #F2E863 !important;
+    border-color: #3B413C !important;
+}
 .list-no-bullets {
     list-style-type: none;
     padding-left: 0px;
@@ -30,7 +53,7 @@ h5 {
     margin-top: 8px;
     margin-bottom: 8px;
 }
-.section-header, .on-queue, .on-spotify, .sgotipy {
+.container {
     padding: 0.75rem 1.25rem;
     margin-top: 16px;
 }
@@ -94,6 +117,8 @@ h5 {
     border: thin solid #212529;
     padding-top: 8px;
     padding-bottom: 8px;
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
 }
 
 .logo {
